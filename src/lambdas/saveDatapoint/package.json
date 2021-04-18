@@ -1,0 +1,11 @@
+{
+  "name": "saveDatapoint",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.888.0",
+    "dayjs": "^1.10.4",
+    "node-fetch": "^2.6.1"
+  }
+}
