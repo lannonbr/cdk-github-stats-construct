@@ -8,13 +8,13 @@ const path = require("path");
 
 class GitHubStatsWorkflow extends Construct {
   /**
-   *
+   * A CDK Construct for setting up a workflow for saving statistics on GitHub repos
    * @param {*} scope
    * @param {*} id
    * @param {Object} props
    * @param {String} props.owner
    * @param {String} props.repo
-   * @param {boolean} props.externalUser - create a user that has read access to the DB and output the access key & secret.
+   * @param {boolean} [props.externalUser] - create a user that has read access to the DB and output the access key & secret.
    * @param {String} props.schedule - cron schedule for when datapoints should be saved
    * @param {String} props.githubToken - Personal Access Token to use for lambda function
    */
@@ -38,7 +38,6 @@ class GitHubStatsWorkflow extends Construct {
       functionName: `${props.owner}-${props.repo}-stats-save-datapoint-function`,
       handler: "index.handler",
       runtime: lambda.Runtime.NODEJS_14_X,
-      memorySize: 256,
       timeout: Duration.seconds(10),
       environment: {
         DYNAMO_TABLE_NAME: database.tableName,
